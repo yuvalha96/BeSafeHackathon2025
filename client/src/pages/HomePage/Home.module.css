@@ -1,0 +1,16 @@
+.home {
+  text-align: center;
+  padding: 20px;
+}
+  
+.content {
+  margin: 0 auto;
+  padding: 70px;
+}
+
+.headline {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #53474F;
+}
+  
