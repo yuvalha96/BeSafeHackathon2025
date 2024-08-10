@@ -185,9 +185,79 @@ PORT=5000
 ```
 
 ## Usage
-1. Ensure your MongoDB server is running or you have access to your MongoDB Atlas cluster.
-2. Run the server and client as described in the installation steps.
-3. Open your browser and navigate to http://localhost:3000 to view the application.
+
+This section explains how to use the application once it’s set up and running. Follow these steps to interact with both the client and server components of the application.
+
+### Running the Server
+
+1. **Navigate to the Server Directory**:
+   - Open a terminal and change to the `server` directory:
+     ```bash
+     cd server
+     ```
+
+2. **Start the Server**:
+   - Start the Express server:
+     ```bash
+     npm start
+     ```
+   - By default, the server will run on `http://localhost:5000`. You can change the port by modifying the `PORT` variable in your `.env` file.
+
+3. **Verify Server Operation**:
+   - Open a browser or API client (like Postman) and navigate to `http://localhost:5000/api/ducks` to test the API endpoints.
+
+### Running the Client
+
+1. **Navigate to the Client Directory**:
+   - Open a new terminal window or tab and change to the `client` directory:
+     ```bash
+     cd client
+     ```
+
+2. **Start the Client**:
+   - Start the React development server:
+     ```bash
+     npm start
+     ```
+   - By default, the client will be accessible at `http://localhost:3000`.
+
+3. **View the Application**:
+   - Open a web browser and navigate to `http://localhost:3000` to view the application. The client communicates with the backend server to fetch and display data.
+
+### Interacting with the Application
+
+- **Frontend**:
+  - The React application provides a simple interface with a button that, when clicked, fetches and displays a random duck from the library.
+  - Click the "Get Random Duck" button to retrieve a random duck from the database and display its details on the screen.
+
+- **Backend**:
+  - The Express server exposes the following API endpoints for managing the duck data:
+    - `GET /api/ducks`: Retrieve all ducks from the database. The client uses this endpoint to fetch the list of ducks and select a random one.
+    - `GET /api/ducks/:id`: Retrieve a single duck by ID.
+    - `POST /api/ducks`: Create a new duck.
+    - `DELETE /api/ducks/:id`: Delete a duck by ID.
+    - `PATCH /api/ducks/:id`: Update a duck by ID.
+
+### Stopping the Servers
+
+- **Stop the Express Server**:
+  - In the terminal where the server is running, press `Ctrl + C` to stop the server.
+
+- **Stop the React Client**:
+  - In the terminal where the client is running, press `Ctrl + C` to stop the client.
+
+### Troubleshooting
+
+- **Server Issues**:
+  - Check the terminal for error messages and ensure your `.env` file is correctly configured.
+  - Verify that MongoDB Atlas is running and accessible.
+
+- **Client Issues**:
+  - Ensure that the React development server is running and that you have no conflicting applications using port 3000.
+  - Check the browser console for errors if the client is not displaying correctly.
+
+By following these steps, you should be able to run and interact with both the client and server components of the application effectively. If you encounter issues, refer to the troubleshooting tips or consult the documentation for more detailed guidance.
+
 
 ## Project Structure
 
