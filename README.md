@@ -9,11 +9,16 @@ Specifically the template is a full-stack MERN application for managing a librar
 ## Table of Contents
 
 - [Installation](#installation)
-- [Setting Up MongoDB Atlas](#setting-up-mongodb-atlas)
-- [Setting Up Environment Variables](#environment-variables)
+   - [Clone the Repository](#clone-the-repository)
+   - [Server Setup](#server-setup)
+   - [Client Setup](#client-setup)
+   - [Testing the Template](#testing-the-template)
+- [Configuration](#configuration)
+   - [Setting Up MongoDB Atlas](#setting-up-mongodb-atlas)
+   - [Setting Up Environment Variables](#environment-variables)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
-- [API Endpoints](#api-endpoints)
+- [Summary](#summary)
 
 ## Installation
 
@@ -26,10 +31,23 @@ Ensure you have the following installed on your local machine:
 - MongoDB - Atlas (see the Setting Up MongoDB Atlas section for details)
 
 ### Clone the Repository
-copy yout repo url.
+To get started with this project, you need to clone the repository to your local machine. Follow these steps:
 
+1. Open a Terminal
+Open your preferred terminal application.
+3. Navigate to the Desired Directory:
+Use the cd command to navigate to the directory where you want to clone the repository. For example:
 ```bash
-git clone <paste-your-repo-url>
+cd path/to/your/directory
+```
+4. Clone the Repository:
+Run the following command to clone the repository:
+```bash
+git clone https://github.com/your-username/queenb-summer-project-template-24.git
+```
+5. Navigate to the Project Directory:
+After cloning, navigate into the project directory:
+```bash
 cd queenb-summer-project-template-24
 ```
 
@@ -67,10 +85,39 @@ npm install
 npm start
 ```
 
-## Setting Up MongoDB Atlas
+### Testing the Template
+1. Ensure All Dependencies Are Installed for client and server.
+2. Configure the Backend:
+   - Copy `.env.example` content to `.env` file and update with your MongoDB connection string and Port.
+3. Run the Backend Server:
+   - Start the server by navigating to the server directory and running:
+```bash
+npm start
+```
+4. Configure the Frontend:
+   - Ensure API URLs in src/App.js are correctly set to your backend server URL.
+5. Run the Frontend Client:
+   - Start the client by navigating to the client directory and running:
+```bash
+npm start
+```
+6. Test the Application:
+   - Open http://localhost:3000 and interact with the application to ensure it works as expected.
+   - Click the "Get Random Duck" button to retrieve a random duck from the database and display its details on the screen.
+
+#### Troubleshooting:
+1. Check browser console and network logs for errors.
+2. Ensure backend and frontend configurations are correct.
+
+- Feedback:
+   - Report any issues or provide feedback for further improvements.
+
+
+## Configuration
+### Setting Up MongoDB Atlas
 only once per project.
 
-### Creating a New Database in MongoDB Atlas
+#### Creating a New Database in MongoDB Atlas
 
 see video toturial by Net Ninja - [Link](https://youtu.be/s0anSjEeua8?si=GAeglEfAuJmvoAtj)
 
@@ -124,7 +171,7 @@ see video toturial by Net Ninja - [Link](https://youtu.be/s0anSjEeua8?si=GAeglEf
      MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/libraryDB?retryWrites=true&w=majority
      ```
 
-### Testing the Connection
+#### Testing the Connection
 1. Start the Server:
 
   * Navigate to the server directory:
@@ -142,7 +189,7 @@ npm run dev
 By following these steps, you will have a MongoDB Atlas database set up and connected to your MERN stack application. 
 
 
-## Environment Variables
+### Environment Variables
 
 Environment variables are used to configure your application without hardcoding sensitive information into your code. For this project, you need to set up the following environment variables in a `.env` file located in the `server` directory:
 
@@ -228,7 +275,6 @@ This section explains how to use the application once it’s set up and running.
 
 - **Frontend**:
   - The React application provides a simple interface with a button that, when clicked, fetches and displays a random duck from the library.
-  - Click the "Get Random Duck" button to retrieve a random duck from the database and display its details on the screen.
 
 - **Backend**:
   - The Express server exposes the following API endpoints for managing the duck data:
@@ -237,6 +283,8 @@ This section explains how to use the application once it’s set up and running.
     - `POST /api/ducks`: Create a new duck.
     - `DELETE /api/ducks/:id`: Delete a duck by ID.
     - `PATCH /api/ducks/:id`: Update a duck by ID.
+
+As mentioned above, it is recommanded to use [Postman](https://www.postman.com/) app to test your api endponts.
 
 ### Stopping the Servers
 
@@ -290,16 +338,34 @@ queenb-summer-project-template-24/
 └── package.json            # Root package.json for repo management
 ```
 
-## API Endpoints
-This projects server includes the following endpoints:
-* GET /api/ducks: Retrieve all ducks
-* GET /api/ducks/:id: Retrieve a single duck by ID
-* POST /api/ducks: Create a new duck
-* DELETE /api/ducks/:id: Delete a duck by ID
-* PATCH /api/ducks/:id: Update a duck by ID
-You can edit and add more endpoints as needed.
+### Explanation
+#### Root Directory
+- queenb-summer-project-template-24/: This is the root directory of your project.
 
-It is recommanded to use [Postman](https://www.postman.com/) app to test your api endponts.
+#### Client Directory
+- client/: Contains the React frontend application.
+   - public/: Static files like index.html, images, and other assets that need to be served directly.
+   - src/: Contains the source code for the React application.
+      - components/: Reusable UI components such as buttons, forms, and other elements.
+      - pages/: Page components that represent different routes in the application.
+      - services/: Services for making API calls and handling business logic.
+      - styles/: CSS and styling files for the application.
+      - App.js: The main React component that sets up routing and renders the application.
+      - index.js: The entry point for the React application, responsible for rendering the App component into the DOM.
+      - package.json: Lists the client-side dependencies and scripts for managing the React application.
+      
+#### Server Directory
+- server/: Contains the Node.js backend application.
+   - controllers/: Contains the logic for handling API requests and responses.
+   - models/: Mongoose models that define the data schema for MongoDB.
+   - routes/: Defines the API endpoints and maps them to controller functions.
+   - .env: Stores environment variables like database connection strings and server port.
+   - server.js: The main server file that sets up Express, connects to the database, and starts the server.
+   - package.json: Lists the server-side dependencies and scripts for managing the Node.js application.
+   
+#### Additional Files
+- README.md: Provides documentation for the project, including setup instructions, usage, and other relevant information.
+
 
 ## Summary
 
