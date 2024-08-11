@@ -9,11 +9,12 @@ Specifically the template is a full-stack MERN application for managing a librar
 ## Table of Contents
 
 - [Installation](#installation)
+   - [Prerequisites](#prerequisites) 
    - [Clone the Repository](#clone-the-repository)
    - [Server Setup](#server-setup)
    - [Client Setup](#client-setup)
-   - [Testing the Template](#testing-the-template)
 - [Configuration](#configuration)
+   - [Testing the Template](#testing-the-template)
    - [Setting Up MongoDB Atlas](#setting-up-mongodb-atlas)
    - [Setting Up Environment Variables](#environment-variables)
 - [Usage](#usage)
@@ -34,19 +35,21 @@ Ensure you have the following installed on your local machine:
 To get started with this project, you need to clone the repository to your local machine. Follow these steps:
 
 1. Open a Terminal
-Open your preferred terminal application.
-3. Navigate to the Desired Directory:
-Use the cd command to navigate to the directory where you want to clone the repository. For example:
+   - Open your preferred terminal application.
+2. Navigate to the Desired Directory:
+   - Use the cd command to navigate to the directory where you want to clone the repository. For example:
 ```bash
 cd path/to/your/directory
 ```
-4. Clone the Repository:
-Run the following command to clone the repository:
+3. Fork this repository - only ONCE per project
+4. Clone the forked Repository:
+   - Copy your repository URL
+   - Run the following command to clone the repository:
 ```bash
-git clone https://github.com/your-username/queenb-summer-project-template-24.git
+git clone <paste-your-repository-url>
 ```
-5. Navigate to the Project Directory:
-After cloning, navigate into the project directory:
+4. Navigate to the Project Directory:
+   - After cloning, navigate into the project directory:
 ```bash
 cd queenb-summer-project-template-24
 ```
@@ -63,8 +66,6 @@ cd server
 ```bash
 npm install
 ```
-
-3. Create a `.env` file in the server directory and add your MongoDB connection string and desired port (see the Setting Up MongoDB Atlas, and Environment Variables sections for details).
 
 ### Client Setup
 1. Navigate to the client directory:
@@ -85,24 +86,54 @@ npm install
 npm start
 ```
 
+## Configuration
 ### Testing the Template
-1. Ensure All Dependencies Are Installed for client and server.
-2. Configure the Backend:
-   - Copy `.env.example` content to `.env` file and update with your MongoDB connection string and Port.
-3. Run the Backend Server:
-   - Start the server by navigating to the server directory and running:
+Ensure All Dependencies Are Installed for client and server.
+
+#### Configure the Backend
+1. Configure Environment Variables for the Backend:
+   - Open a terminal and navigate to the `server` directory:
+```bash
+cd ../server
+```
+   - Create a `.env` file in the server.
+   - Copy `.env.example` content to the `.env` file.
+   - Here is an example of what your `.env` file might look like:
+
+```env
+MONGO_URI=mongodb+srv://myUser:myPassword@cluster0.mongodb.net/myDatabase?retryWrites=true&w=majority
+PORT=5000
+```
+
+2. Run the Backend Server:
 ```bash
 npm start
 ```
-4. Configure the Frontend:
-   - Ensure API URLs in src/App.js are correctly set to your backend server URL.
-5. Run the Frontend Client:
+3. Verify Server Operation:
+   - Open a browser or API client (like [Postman](https://www.postman.com/)) and to test the API endpoints.
+
+#### Configure the Frontend
+1. Configure Environment Variables for the Frontend:
+   - Open a terminal and navigate to the `client` directory:
+```bash
+cd ../client
+```
+   - Create a `.env` file in the client.
+   - Add a varible named `REACT_APP_API_URL` - this URL should point to your backend server.
+   - Here is an example of what your `.env` file might look like:
+
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+```
+
+2. Run the Frontend Client:
    - Start the client by navigating to the client directory and running:
 ```bash
 npm start
 ```
-6. Test the Application:
-   - Open http://localhost:3000 and interact with the application to ensure it works as expected.
+
+#### Test the Application:
+   - Open `http://localhost:<client-port-number>` and interact with the application to ensure it works as expected.
    - Click the "Get Random Duck" button to retrieve a random duck from the database and display its details on the screen.
 
 #### Troubleshooting:
@@ -113,7 +144,8 @@ npm start
    - Report any issues or provide feedback for further improvements.
 
 
-## Configuration
+After testing the template and verifying the server and client are working as expected - set yout own project MongoDB configurstion and Evironment variavles:
+
 ### Setting Up MongoDB Atlas
 only once per project.
 
@@ -160,16 +192,16 @@ see video toturial by Net Ninja - [Link](https://youtu.be/s0anSjEeua8?si=GAeglEf
    - Click the "Connect" button next to your cluster.
    - Choose "Connect your application".
    - Copy the connection string. It will look something like this:
-     ```
-     mongodb+srv://<username>:<password>@cluster0.mongodb.net/libraryDB?retryWrites=true&w=majority
-     ```
+```
+mongodb+srv://<username>:<password>@cluster0.mongodb.net/libraryDB?retryWrites=true&w=majority
+```
 
-8. **Update Your .env File**:
+8. **Update Your server .env File**:
    - In your `server` directory, create a `.env` file if it doesn't already exist.
    - Add your MongoDB connection string to the `.env` file, replacing `<username>` and `<password>` with your database user credentials:
-     ```env
-     MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/libraryDB?retryWrites=true&w=majority
-     ```
+```env
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/libraryDB?retryWrites=true&w=majority
+```
 
 #### Testing the Connection
 1. Start the Server:
@@ -191,45 +223,56 @@ By following these steps, you will have a MongoDB Atlas database set up and conn
 
 ### Environment Variables
 
-Environment variables are used to configure your application without hardcoding sensitive information into your code. For this project, you need to set up the following environment variables in a `.env` file located in the `server` directory:
+Environment variables are used to configure your application without hardcoding sensitive information into your code. For this project, you need to set up the following environment variables in a `.env` file located both in the `server` directory and `client` directory:
 
+#### Setup Server `.env` file
+The server `.env` file should contain the following environment variables:
 1. **MONGO_URI**: This variable contains the connection string for your MongoDB database. It tells your server where to find the database and how to connect to it. You will get this connection string from MongoDB Atlas when you set up your database.
 
 2. **PORT**: This variable defines the port on which your Express server will run. By default, this is set to `5000`, but you can change it to any available port number.
 
-#### How to Set Up Your `.env` File
+**How to Set Up Your `.env` Server File**
 
 1. **Create a `.env` File**:
    - Navigate to the `server` directory:
-     ```bash
-     cd server
-     ```
+```bash
+cd server
+```
    - Create a file named `.env` if it does not already exist.
 
 2. **Add the Environment Variables**:
    - Open the `.env` file in a text editor.
    - Add the following lines, replacing placeholders with your actual values:
 
-     ```env
-     MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/libraryDB?retryWrites=true&w=majority
-     PORT=5000
-     ```
-
+```env
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/libraryDB?retryWrites=true&w=majority
+PORT=5000
+```
    - Replace `<username>` and `<password>` with the credentials you created for your MongoDB Atlas database.
    - `libraryDB` should be replaced with the name of your database if different.
    - You can change `5000` to any port number you prefer.
 
-3. **Save the File**:
-   - Save the `.env` file after adding the necessary environment variables.
+#### Setup Client .env file
+The client .env file should contain the following environment variables:
 
-#### Example `.env` File
+1. **REACT_APP_API_URL**: This variable contains the URL of your backend API. It tells your client where to send requests to interact with the server. By default, this should be set to http://localhost:5000/api, but you should change it to match your server's actual URL if different.
 
-Here is an example of what your `.env` file might look like:
+**How to Set Up Your .env Client File**
 
-```env
-MONGO_URI=mongodb+srv://myUser:myPassword@cluster0.mongodb.net/myDatabase?retryWrites=true&w=majority
-PORT=5000
+1. **Create a `.env` File**:
+   - Navigate to the `client` directory:
+```bash
+cd client
 ```
+   - Create a file named `.env` if it does not already exist.
+
+2. **Add the Environment Variables**:
+   - Open the .env file in a text editor.
+   - Add the following line, replacing the placeholder with your actual server URL:
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+```
+Replace http://localhost:5000/api with the URL of your backend server if it is running on a different host or port.
 
 ## Usage
 
@@ -239,33 +282,30 @@ This section explains how to use the application once it’s set up and running.
 
 1. **Navigate to the Server Directory**:
    - Open a terminal and change to the `server` directory:
-     ```bash
-     cd server
-     ```
+```bash
+cd server
+```
 
 2. **Start the Server**:
    - Start the Express server:
-     ```bash
-     npm start
-     ```
+```bash
+npm start
+```
    - By default, the server will run on `http://localhost:5000`. You can change the port by modifying the `PORT` variable in your `.env` file.
-
-3. **Verify Server Operation**:
-   - Open a browser or API client (like Postman) and navigate to `http://localhost:5000/api/ducks` to test the API endpoints.
 
 ### Running the Client
 
 1. **Navigate to the Client Directory**:
    - Open a new terminal window or tab and change to the `client` directory:
-     ```bash
-     cd client
-     ```
+```bash
+cd client
+```
 
 2. **Start the Client**:
    - Start the React development server:
-     ```bash
-     npm start
-     ```
+```bash
+npm start
+```
    - By default, the client will be accessible at `http://localhost:3000`.
 
 3. **View the Application**:
