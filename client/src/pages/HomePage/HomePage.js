@@ -1,15 +1,13 @@
 import React from 'react';
 import styles from './Home.module.css';
-import FirstComponent from '../../components/FirstComponent/FirstComponent';
+import RandomDuck from '../../components/RandomDuck/RandomDuck';
 
 
 const Home = () => {
   return (
     <div className={styles.home}>
-      <div className={styles.content}>
-        <h1 className={styles.headline}>Welcome to Your App</h1>
-        <FirstComponent />
-      </div>
+      <h1 className={styles.headline}>Duck It</h1>
+      <RandomDuck />
     </div>
   );
 };

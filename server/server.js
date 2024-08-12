@@ -1,19 +1,42 @@
 const express = require('express');
-const path = require('path');
+const mongoose = require('mongoose');
 const cors = require('cors');
+const dotenv = require('dotenv');
+const rubberDucksRoutes = require('./routes/rubberDucks')
+
+dotenv.config();
+
+// Constants
+const PORT = process.env.PORT;
+
+// Create Express server
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+// Middleware
+app.use(express.json())
+app.use(cors({
+  origin: process.env.CLIENT_URL
+}));
 
-app.get('/api/message', (req, res) => {
-  res.json({ message: 'Hello from the server!' });
-});
+app.use((req, res, next) => {
+  console.log(req.path, req.method)
+  next()
+})
 
-app.get('/', (req, res) => {
-  res.send('Welcome to the Express server');
-});
+// Routes
+app.use('/api/rubberDucks', rubberDucksRoutes)
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    // listen for requests
+    app.listen(PORT, () => {
+      console.log('connected to mongoDB & listening on port', process.env.PORT)
+    })
+  }).catch((err) => {
+    console.log(err)
+  });
+
+
+
+
