@@ -14,7 +14,7 @@ Specifically the template is a full-stack MERN application for managing a librar
    - [Server Setup](#server-setup)
    - [Client Setup](#client-setup)
 - [Configuration](#configuration)
-   - [Testing the Template](#testing-the-template)
+   - [Testing the Template w Random Duck Feature](#testing-the-template-w-random-duck-feature)
    - [Setting Up MongoDB Atlas](#setting-up-mongodb-atlas)
    - [Setting Up Environment Variables](#environment-variables)
 - [Usage](#usage)
@@ -81,15 +81,20 @@ cd ../client
 npm install
 ```
 
-3. Start the client:
-
-```bash
-npm start
-```
-
 ## Configuration
-### Testing the Template
-Ensure All Dependencies Are Installed for client and server.
+### Testing the Template w Random Duck Feature
+First, ensure All Dependencies Are Installed for client and server (see installation section).
+
+This template includes a simple feature to display a random rubber duck from example READ ONLY database. 
+This feature demonstrates the integration of the frontend with the backend and can be used to test if your setup is working correctly.
+
+**How It Works**
+1. Client:
+   - The home page contains a button labeled "Show Random Duck".
+   - When clicked, this button sends a request to the backend to fetch a random rubber duck.
+   - The details of the random rubber duck, including its name and image, are displayed on the page.
+2. Backend:
+   - The server has an endpoint /api/rubberDucks/random that selects a random rubber duck from the database and returns its details in the response.
 
 #### Configure the Backend
 1. Configure Environment Variables for the Backend:
@@ -106,12 +111,10 @@ MONGO_URI=mongodb+srv://myUser:myPassword@cluster0.mongodb.net/myDatabase?retryW
 PORT=5000
 ```
 
-2. Run the Backend Server:
+2. Run the Backend Server in development mode:
 ```bash
-npm start
+npm run dev
 ```
-3. Verify Server Operation:
-   - Open a browser or API client (like [Postman](https://www.postman.com/)) to test the API endpoints.
 
 #### Configure the Frontend
 1. Configure Environment Variables for the Frontend:
@@ -124,7 +127,7 @@ cd ../client
    - Here is an example of what your `.env` file might look like:
 
 ```env
-REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_API_URL=http://localhost:8000/api
 ```
 
 2. Run the Frontend Client:
@@ -134,8 +137,10 @@ npm start
 ```
 
 #### Test the Application:
-   - Open `http://localhost:<client-port-number>` and interact with the application to ensure it works as expected.
-   - Click the "Get Random Duck" button to retrieve a random duck from the database and display its details on the screen.
+   - Open `http://localhost:<client-port-number>` (usually at http://localhost:3000) and interact with the application to ensure it works as expected.
+   - Click the "Show Random Duck" button to retrieve a random duck from the database and display its details on the screen.
+   - This feature helps verify that your frontend can communicate with the backend and retrieve data from the MongoDB database correctly. If you see the random duck's details displayed on the page, your setup is working properly.
+   - IMPORTANT NOTE - the example MongoDB connection string attached to the server file grants you a READ ONLY permissions to the rubber duck example database - you only be able to use GET requests, and cannot modify data. 
 
 #### Troubleshooting:
 1. Check browser console and network logs for errors.
@@ -143,7 +148,6 @@ npm start
 
 - Feedback:
    - Report any issues or provide feedback for further improvements.
-
 
 After testing the template and verifying the server and client are working as expected - set yout own project MongoDB configurstion and Evironment variavles:
 
@@ -256,7 +260,7 @@ PORT=5000
 #### Setup Client .env file
 The client .env file should contain the following environment variables:
 
-1. **REACT_APP_API_URL**: This variable contains the URL of your backend API. It tells your client where to send requests to interact with the server. By default, this should be set to http://localhost:5000/api, but you should change it to match your server's actual URL if different.
+1. **REACT_APP_API_URL**: This variable contains the URL of your backend API. It tells your client where to send requests to interact with the server. By default, this should be set to http://localhost:8000/api, but you should change it to match your server's actual URL if different.
 
 **How to Set Up Your .env Client File**
 
@@ -271,9 +275,9 @@ cd client
    - Open the .env file in a text editor.
    - Add the following line, replacing the placeholder with your actual server URL:
 ```env
-REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_API_URL=http://localhost:8000/api
 ```
-Replace http://localhost:5000/api with the URL of your backend server if it is running on a different host or port.
+Replace http://localhost:8000/api with the URL of your backend server if it is running on a different host or port.
 
 ## Usage
 
@@ -288,11 +292,14 @@ cd server
 ```
 
 2. **Start the Server**:
-   - Start the Express server:
+   - Start the Express server in development mode:
 ```bash
-npm start
+npm run dev
 ```
-   - By default, the server will run on `http://localhost:5000`. You can change the port by modifying the `PORT` variable in your `.env` file.
+   - By default, the server will run on `http://localhost:8000`. You can change the port by modifying the `PORT` variable in your `.env` file.
+
+3. Verify Server Operation:
+   - Open a browser or API client (like [Postman](https://www.postman.com/)) to test your API endpoints.
 
 ### Running the Client
 
