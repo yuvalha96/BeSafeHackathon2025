@@ -7,11 +7,10 @@ const RandomDuck = () => {
   const { duck, getRandomDuck } = useContext(DuckContext);
 
   if (!duck) return null;
-  console.log(duck.imageUrl);
 
   return (
     <div className={styles.container}>
-      <FirstButton onClick={getRandomDuck}>get a random rubber duck</FirstButton>
+      <FirstButton onClick={getRandomDuck}>Show Random Duck</FirstButton>
       {duck && (
           <div className={styles.duck}>
             <h2 className={styles.duckName}>{duck.name}</h2>
