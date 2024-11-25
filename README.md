@@ -1,7 +1,7 @@
-# queenb-summer-project-template-24
+# QueenB X AppsFlyer - BeSafe Hackathon 2025
 
 This project template is designed for junior deevlopers aimed at gaining hands-on experience in full-stack development. 
-This project includes a Node.js server with Express, a React client, and MongoDB for the database, providing an opportunity to engage in frontend development, backend development, and API integration.
+This project includes a Node.js server with Express and a React client, providing an opportunity to engage in frontend development, backend development, and API integration.
 Specifically the template is a full-stack MERN application for managing a library of rubber ducks - but you can modify it and build a library application of your choice.
 
 **FORK THIS REPO** before starting the installations and settings. 
@@ -30,7 +30,6 @@ Ensure you have the following installed on your local machine:
 
 - [Node.js](https://nodejs.org/en) (version 20.x or higher)
 - npm (version 10.x or higher)
-- MongoDB - Atlas (see the Setting Up MongoDB Atlas section for details)
 
 ### Clone the Repository
 To get started with this project, you need to clone the repository to your local machine. Follow these steps:
@@ -52,7 +51,7 @@ git clone <paste-your-repository-url>
 4. Navigate to the Project Directory:
    - After cloning, navigate into the project directory:
 ```bash
-cd queenb-summer-project-template-24
+cd BeSafeHackathon2025
 ```
 
 ### Server Setup
@@ -139,87 +138,14 @@ npm start
 
 After testing the template and verifying the server and client are working as expected - set yout own project MongoDB configurstion and Evironment variavles:
 
-### Setting Up MongoDB Atlas
-only once per project.
-
-#### Creating a New Database in MongoDB Atlas
-
-see video toturial by Net Ninja - [Link](https://youtu.be/s0anSjEeua8?si=GAeglEfAuJmvoAtj)
-
-1. **Sign Up / Log In to MongoDB Atlas**:
-   - Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and sign up for a new account or log in if you already have one.
-
-2. **Create a New Project**:
-   - Once logged in, click on "Projects" in the left-hand menu.
-   - Click on the "New Project" button.
-   - Enter a project name, e.g., "LibraryProject", and click "Next".
-   - Add your teamates as project members.
-   - Click "create project".
-
-3. **Create a New Cluster**:
-   - Within your new project, click on "Create a Cluster".
-   - Choose a cloud provider and region - choose the free plan and the AWS cloud provider.
-   - Click "Create Deployment". This process might take a few minutes.
-
-4. **Set Up Database Access**:
-   - Once your cluster is created, you need to set up a user to access the database.
-   - Click on the "Database Access" tab.
-   - Click the "Add New Database User" button.
-   - Create a user with a username and password. Make sure to note these down as you will need them later.
-   - Set the user's permissions to "Read and write to any database".
-
-5. **Network Access**:
-   - Click on the "Network Access" tab.
-   - Click the "Add IP Address" button.
-   - Add your current IP address or allow access from anywhere (0.0.0.0/0) if you're just testing. Be cautious with security when using the latter option.
-
-6. **Create a Database**:
-   - Click on the "Database" tab.
-   - Click the "Browse Collections" button next to your cluster.
-   - Click "Create Database".
-   - Enter a database name, e.g., "libraryDB", and a collection name, e.g., "ducks".
-   - Click "Create".
-
-7. **Connect to Your Cluster**:
-   - Go back to the "Database" tab.
-   - Click the "Connect" button next to your cluster.
-   - Choose "Connect your application".
-   - Copy the connection string. It will look something like this:
-```
-mongodb+srv://<username>:<password>@cluster0.mongodb.net/libraryDB?retryWrites=true&w=majority
-```
-
-8. **Update Your server .env File**:
-   - In your `server` directory, create a `.env` file if it doesn't already exist.
-   - Add your MongoDB connection string to the `.env` file as your `MONGO_URI`.
-
-#### Testing the Connection
-1. Start the Server:
-
-  * Navigate to the server directory:
-```bash
-cd server
-```
-  * Start the server:
-```bash
-npm run dev
-```
-
-  * Verify Connection:
-  Check the terminal for a message indicating a successful connection to MongoDB.
-
-By following these steps, you will have a MongoDB Atlas database set up and connected to your MERN stack application. 
-
-
 ### Environment Variables
 
 Environment variables are used to configure your application without hardcoding sensitive information into your code. For this project, you need to set up the following environment variables in a `.env` file located both in the `server` directory and `client` directory:
 
 #### Setup Server `.env` file
 The server `.env` file should contain the following environment variables:
-1. **MONGO_URI**: This variable contains the connection string for your MongoDB database. It tells your server where to find the database and how to connect to it. You will get this connection string from MongoDB Atlas when you set up your database.
 
-2. **PORT**: This variable defines the port on which your Express server will run. By default, this is set to `5000`, but you can change it to any available port number.
+1. **PORT**: This variable defines the port on which your Express server will run. By default, this is set to `5000`, but you can change it to any available port number.
 
 **How to Set Up Your `.env` Server File**
 
@@ -235,11 +161,9 @@ cd server
    - Add the following lines, replacing placeholders with your actual values:
 
 ```env
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/libraryDB?retryWrites=true&w=majority
 CLIENT_URL=http://localhost:3000
 PORT=5000
 ```
-   - Replace `MONGO_URI` to be your created Atlas DB connaction string
    - You can change `5000` to any port number you prefer.
    - Make sure `CLIENT_URL` is set to your client current port.
 
