@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const rubberDucksRoutes = require('./routes/rubberDucks')
@@ -25,17 +24,6 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/rubberDucks', rubberDucksRoutes)
-
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    // listen for requests
-    app.listen(PORT, () => {
-      console.log('connected to mongoDB & listening on port', process.env.PORT)
-    })
-  }).catch((err) => {
-    console.log(err)
-  });
 
 
 
