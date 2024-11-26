@@ -1,82 +1,73 @@
-const RubberDuck = require('../models/RubberDuckModel');
+const ducks = require('../data/duckData');
 
-// get all ducks
-const getAllDucks = async (req, res) => {
-    try {
-        const ducks = await RubberDuck.find();
-        res.status(200).json({ducks});
-    } catch (err) {
-        res.status(400).json({mssg: 'error getting ducks', err})
-    }
-}
-
-
-// get a random duck
-const getRandomDuck = async (req, res) => {
-    try {
-        const count = await RubberDuck.countDocuments();
-        const random = Math.floor(Math.random() * count);
-        const duck = await RubberDuck.findOne().skip(random);
-        res.status(200).json(duck);
-    } catch (error) {
-        res.status(400).json({ mssg: 'Error fetching random duck', err: error });
-    }
+// Get all ducks
+const getAllDucks = (req, res) => {
+    console.log("in get all ducks")
+    res.status(200).json({ ducks });
 };
 
-// get a single duck
-const getSingleDuck = async (req, res) => {
-    const {id} = req.params;
+// Get a random duck
+const getRandomDuck = (req, res) => {
+    const randomIndex = Math.floor(Math.random() * ducks.length);
+    res.status(200).json(ducks[randomIndex]);
+};
 
-    try {
-        const duck = await RubberDuck.findById(id);
-        res.status(200).json({duck});
-    } catch (err) {
-        res.status(400).json({mssg: 'error getting duck', err})
+// Get a single duck
+const getSingleDuck = (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const duck = ducks.find(d => d.id === id);
+
+    if (!duck) {
+        return res.status(404).json({ mssg: "Duck not found" });
     }
-}
+    res.status(200).json({ duck });
+};
 
-// create a new duck
-const createDuck = async (req, res) => {
-    const {name, color, imageUrl} = req.body;
+// Create a new duck
+const createDuck = (req, res) => {
+    const { name, color, imageUrl } = req.body;
+    const newDuck = {
+        id: ducks.length ? ducks[ducks.length - 1].id + 1 : 1,
+        name,
+        color,
+        imageUrl
+    };
+    ducks.push(newDuck);
+    res.status(201).json({ duck: newDuck });
+};
 
-    try {
-        const duck = await RubberDuck.create({name, color, imageUrl});
-        res.status(200).json({duck});
-    } catch (err) {
-        res.status(400).json({mssg: 'error creating duck', err})
+// Delete a duck
+const deleteDuck = (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const duckIndex = ducks.findIndex(d => d.id === id);
+
+    if (duckIndex === -1) {
+        return res.status(404).json({ mssg: "Duck not found" });
     }
-}
 
-// delete a duck
-const deleteDuck = async (req, res) => {
-    const {id} = req.params;
+    const [deletedDuck] = ducks.splice(duckIndex, 1);
+    res.status(200).json({ duck: deletedDuck });
+};
 
-    try {
-        const duck = await RubberDuck.findByIdAndDelete(id);
-        res.status(200).json({duck});
-    } catch (err) {
-        res.status(400).json({mssg: 'error deleting duck', err})
+// Update a duck
+const updateDuck = (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const duckIndex = ducks.findIndex(d => d.id === id);
+
+    if (duckIndex === -1) {
+        return res.status(404).json({ mssg: "Duck not found" });
     }
-}
 
-// update a duck
-const updateDuck = async (req, res) => {
-    const {id} = req.params;
-    const {name, color, squeaks} = req.body;
-
-    try {
-        const duck = await RubberDuck.findByIdAndUpdate(id, {name, color, squeaks}, {new: true});
-        res.status(200).json({duck});
-    } catch (err) {
-        res.status(400).json({mssg: 'error updating duck', err})
-    }
-}
+    const updatedDuck = { ...ducks[duckIndex], ...req.body };
+    ducks[duckIndex] = updatedDuck;
+    res.status(200).json({ duck: updatedDuck });
+};
 
 module.exports = {
     getAllDucks,
+    getRandomDuck,
     getSingleDuck,
     createDuck,
     deleteDuck,
-    updateDuck,
-    getRandomDuck,
-}
+    updateDuck
+};

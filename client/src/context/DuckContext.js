@@ -8,7 +8,7 @@ const DuckProvider = ({ children }) => {
 
     const getRandomDuck = async () => {
         try {
-            const response = await api.get('/rubberDucks/random');
+            const response = await api.get('/ducks/random');
             setDuck(response.data);
         } catch (error) {
             console.error('Error fetching the random duck:', error);
