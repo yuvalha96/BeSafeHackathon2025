@@ -1,30 +1,26 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const rubberDucksRoutes = require('./routes/rubberDucks')
+const rubberDuckRoutes = require('./routes/rubberDucks'); // Import the routes
 
 dotenv.config();
 
-// Constants
-const PORT = process.env.PORT;
-
-// Create Express server
 const app = express();
 
-// Middleware
-app.use(express.json())
+app.use(express.json());
+app.use('/images', express.static(path.join(__dirname, 'images'))); // Serve static images
+
 app.use(cors({
   origin: process.env.CLIENT_URL
 }));
 
-app.use((req, res, next) => {
-  console.log(req.path, req.method)
-  next()
-})
-
-// Routes
-app.use('/api/rubberDucks', rubberDucksRoutes)
+// Use the routes file for all `/ducks` routes
+app.use('/ducks', rubberDuckRoutes);
 
 
-
-
+// Start server
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});

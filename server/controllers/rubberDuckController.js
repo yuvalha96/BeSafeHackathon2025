@@ -2,12 +2,12 @@ const ducks = require('../data/duckData');
 
 // Get all ducks
 const getAllDucks = (req, res) => {
+    console.log("in get all ducks")
     res.status(200).json({ ducks });
 };
 
 // Get a random duck
 const getRandomDuck = (req, res) => {
-    console.log("in get random duck")
     const randomIndex = Math.floor(Math.random() * ducks.length);
     res.status(200).json(ducks[randomIndex]);
 };
