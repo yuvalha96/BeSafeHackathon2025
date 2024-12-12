@@ -15,7 +15,6 @@ Specifically the template is a full-stack MERN application for managing a librar
    - [Client Setup](#client-setup)
 - [Configuration](#configuration)
    - [Testing the Template w Random Duck Feature](#testing-the-template-w-random-duck-feature)
-   - [Setting Up MongoDB Atlas](#setting-up-mongodb-atlas)
    - [Setting Up Environment Variables](#environment-variables)
 - [Usage](#usage)
 - [Best Practices for Implementing a Full Stack Feature](#best-practices-for-implementing-a-full-stack-feature)
@@ -126,8 +125,7 @@ npm start
 #### Test the Application:
    - Open `http://localhost:<client-port-number>` (usually at http://localhost:3000) and interact with the application to ensure it works as expected.
    - Click the "Show Random Duck" button to retrieve a random duck from the database and display its details on the screen.
-   - This feature helps verify that your frontend can communicate with the backend and retrieve data from the MongoDB database correctly. If you see the random duck's details displayed on the page, your setup is working properly.
-   - IMPORTANT NOTE - the example MongoDB connection string attached to the server file grants you a READ ONLY permissions to the rubber duck example database - you only be able to use GET requests, and cannot modify data. 
+   - This feature helps verify that your frontend can communicate with the backend. If you see the random duck's details displayed on the page, your setup is working properly.
 
 #### Troubleshooting:
 1. Check browser console and network logs for errors.
@@ -135,8 +133,6 @@ npm start
 
 - Feedback:
    - Report any issues or provide feedback for further improvements.
-
-After testing the template and verifying the server and client are working as expected - set yout own project MongoDB configurstion and Evironment variavles:
 
 ### Environment Variables
 
@@ -241,7 +237,6 @@ npm start
 
 - **Server Issues**:
   - Check the terminal for error messages and ensure your `.env` file is correctly configured.
-  - Verify that MongoDB Atlas is running and accessible.
 
 - **Client Issues**:
   - Ensure that the React development server is running and that you have no conflicting applications using port 3000.
@@ -347,7 +342,6 @@ queenb-summer-project-template-24/
 #### Server Directory
 - server/: Contains the Node.js backend application.
    - controllers/: Contains the logic for handling API requests and responses.
-   - models/: Mongoose models that define the data schema for MongoDB.
    - routes/: Defines the API endpoints and maps them to controller functions.
    - .env: Stores environment variables like database connection strings and server port.
    - server.js: The main server file that sets up Express, connects to the database, and starts the server.
@@ -359,7 +353,7 @@ queenb-summer-project-template-24/
 
 ## Summary
 
-The provided setup instructions cover the installation, configuration, and running of both the client and server, including setting up environment variables and connecting to MongoDB Atlas. By following the guidelines, you will be able to develop a complete application and understand the key components of a full-stack web development project.
+The provided setup instructions cover the installation, configuration, and running of both the client and server, including setting up environment variables. By following the guidelines, you will be able to develop a complete application and understand the key components of a full-stack web development project.
 
 Feel free to customize and extend this template based on your project requirements and learnings from the mentorship program.
 
