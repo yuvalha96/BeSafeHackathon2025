@@ -40,8 +40,8 @@ To get started with this project, you need to clone the repository to your local
 ```bash
 cd path/to/your/directory
 ```
-3. Fork this repository - only ONCE per project
-4. Clone the forked Repository:
+3. Create a project from this repository by clicking on "use as template" (more info [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)) - only ONCE per project
+4. Clone the new Repository:
    - Copy your repository URL
    - Run the following command to clone the repository:
 ```bash
