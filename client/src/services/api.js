@@ -1,8 +1,9 @@
 import axios from 'axios';
+const apiUrl = import.meta.env.VITE_SERVER_API_URL;
 
 // Create an instance of Axios with default configurations
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: apiUrl,
   headers: {
     'Content-Type': 'application/json',
   },
