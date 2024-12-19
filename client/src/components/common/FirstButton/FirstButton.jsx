@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './FirstButton.module.css';
 
 const FirstButton = ({ children, onClick, disabled }) => {
@@ -11,6 +11,12 @@ const FirstButton = ({ children, onClick, disabled }) => {
       {children}
     </button>
   );
+};
+
+FirstButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 export default FirstButton;
