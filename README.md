@@ -102,7 +102,7 @@ Ensure backend and frontend configurations (`.env` files) are correct.
 
 ### Explanation
 #### Root Directory
-- queenb-summer-project-template-24/: This is the root directory of your project.
+- BeSafeHackathon2025/: This is the root directory of your project.
 
 #### Client Directory
 - client/: Contains the React (Vite) frontend application, including `index.html`
