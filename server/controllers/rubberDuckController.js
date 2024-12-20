@@ -1,4 +1,4 @@
-const ducks = require('../data/duckData');
+import ducks from '../data/duckData.js';
 
 // Get all ducks
 const getAllDucks = (req, res) => {
@@ -62,7 +62,7 @@ const updateDuck = (req, res) => {
     res.status(200).json({ duck: updatedDuck });
 };
 
-module.exports = {
+export {
     getAllDucks,
     getRandomDuck,
     getSingleDuck,

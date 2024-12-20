@@ -1,13 +1,14 @@
-const express = require('express');
-const { createDuck,
+import express from 'express';
+import {
+    createDuck,
     getAllDucks,
     getSingleDuck,
     deleteDuck,
     updateDuck,
     getRandomDuck,
- } = require('../controllers/rubberDuckController')
+} from '../controllers/rubberDuckController.js';
 
-const router = express.Router()
+const router = express.Router();
 
 /**
  * Read Only Permission Routes
@@ -33,4 +34,4 @@ router.delete('/:id', deleteDuck)
 // UPDATE a duck
 router.patch('/:id', updateDuck)
 
-module.exports = router
+export default router;
