@@ -5,4 +5,4 @@ const ducks = [
     { id: 4, name: "Elvis Duck", color: "blue", imageUrl: "images/duck4.webp" }
 ];
 
-module.exports = ducks;
+export default ducks;
