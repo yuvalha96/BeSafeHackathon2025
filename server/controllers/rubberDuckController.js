@@ -2,7 +2,6 @@ const ducks = require('../data/duckData');
 
 // Get all ducks
 const getAllDucks = (req, res) => {
-    console.log("in get all ducks")
     res.status(200).json({ ducks });
 };
 
