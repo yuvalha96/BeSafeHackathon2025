@@ -14,6 +14,7 @@ This feature demonstrates the integration of the frontend with the backend and c
    - The details of the random rubber duck, including its name and image, are displayed on the page.
 2. Backend:
    - The server has an endpoint `/api/rubberDucks/random` that selects a random rubber duck from the database and returns its details in the response.
+   - The server contains more endpoints, but without corresponding implementation in the client. These endpoints are to set example of more types of requests.
 
 ## Installation
 
