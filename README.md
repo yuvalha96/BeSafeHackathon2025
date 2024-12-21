@@ -98,33 +98,31 @@ Ensure backend and frontend configurations (`.env` files) are correct.
 
 ## Project Structure
 
-- `client/`: Contains the React frontend application.
-- `server/`: Contains the Express backend application, including API routes and database models.
-
-### Explanation
-#### Root Directory
-- BeSafeHackathon2025/: This is the root directory of your project.
-
-#### Client Directory
-- client/: Contains the React (Vite) frontend application, including `index.html`
-   - `public/`: static assets that do not need to be processed by Vite's build pipeline. These files are copied as-is to the build output directory. In our case, the HTML's favicon.
-   - `src/`: Contains the source code for the React application.
-      - `assets/`: assets that are part of the source code and need to be processed by Vite's build pipeline. This includes images, fonts, and other files that might be imported into your JavaScript or CSS files. In our case, the QueenB summer camp logo.
-      - `components/`: Reusable UI components such as buttons, forms, and other elements.
-      - `pages/`: Page components that represent different routes in the application.
-      - `services/`: Services for making API calls and handling business logic.
-      - `styles/`: CSS and styling files for the application.
-      - `App.jsx`: The main React component that sets up routing and renders the application.
-      - `index.jsx`: The entry point for the React application, responsible for rendering the App component into the DOM.
-      - `package.json`: Lists the client-side dependencies and scripts for managing the React application.
+### Client Directory (`client/`)
+Contains the React (Vite) frontend application.
+- `package.json`: Lists the client-side dependencies and scripts for managing the React application.
+- `.env`: Stores environment variables like the API endpoint URL.
+- `index.html`: Main HTML page hosting all the React components of the application (frontend entry point)
+- `public/`: static assets that do not need to be processed by Vite's build pipeline. These files are copied as-is to the build output directory. In our case, the HTML's favicon.
+- `src/`: Contains the source code for the React application.
+   - `assets/`: assets that are part of the source code and need to be processed by Vite's build pipeline. This includes images, fonts, and other files that might be imported into your JS or CSS files. In our case, the QueenB summer camp logo.
+   - `components/`: Reusable UI components such as buttons, forms, and other elements.
+   - `context/`: Contains the React context for the ducks, responsible for pulling the current duck from the API
+   - `pages/`: Page components that represent different routes in the application.
+   - `services/`: Services for making API calls and handling business logic.
+   - `styles/`: CSS and styling files for the application.
+   - `App.jsx`: The main React component that sets up routing and renders the application.
+   - `index.jsx`: The entry point for the React application, responsible for rendering the App component into the DOM.
       
-#### Server Directory
-- `server/`: Contains the Node.js backend application.
-   - `controllers/`: Contains the logic for handling API requests and responses.
-   - `routes/`: Defines the API endpoints and maps them to controller functions.
-   - `.env`: Stores environment variables like database connection strings and server port.
-   - `server.js`: The main server file that sets up Express, connects to the database, and starts the server.
-   - `package.json`: Lists the server-side dependencies and scripts for managing the Node.js application.
+### Server Directory (`server/`)
+Contains the Node.js / Express backend application.
+- `package.json`: Lists the server-side dependencies and scripts for managing the Node.js application.
+- `.env`: Stores environment variables like database connection strings and server port.
+- `server.js`: The main server file that sets up Express, connects to the database, and starts the server (backend entry point).
+- `controllers/`: Contains the logic for handling API requests and responses.
+- `data/`: Contains the initial duck data (readonly database)
+- `images/`: Contains the duck images referenced by the duck data above
+- `routes/`: Defines the API endpoints and maps them to controller functions.
 
 ## Best practices & Teamwork
 [Full guide](BestPractices.md)
