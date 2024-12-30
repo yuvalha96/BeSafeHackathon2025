@@ -51,7 +51,7 @@ Make a copy of the `.env.example` file under the `server` folder and name it `.e
 
 #### Configure the Frontend (client)
 
-Make a copy of the `.env.example` file under the `server` folder and name it `.env`. 
+Make a copy of the `.env.example` file under the `client` folder and name it `.env`. 
 This file contains the following environment variable (you don't need to touch them at this point):
 
 * `VITE_SERVER_API_URL`: This variable contains the URL of your backend API. It tells your client where to send requests to interact with the server. By default, this should be set to http://localhost:5000/, but you should change it to match your server's actual URL if different (where 5000 is the `PORT` you defined in the server `.env` file above).
